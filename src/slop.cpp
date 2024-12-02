@@ -173,7 +173,9 @@ slop::SlopSelection slop::XShapeSlopSelect( slop::SlopOptions* options ) {
     // This is where we'll run through all of our stuffs
     auto last = std::chrono::high_resolution_clock::now();
     while( memory->running ) {
-        slop::mouse->update();
+        if ( !options->nomouse ) {
+            slop::mouse->update();
+        }
         if ( !options->nokeyboard ) {
             slop::keyboard->update();
         }
